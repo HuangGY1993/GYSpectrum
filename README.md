@@ -4,7 +4,7 @@
 
 先上效果图：
 
-![image](https://github.com/HuangGY1993/GYTableView/blob/master//display.gif)
+![image](https://github.com/HuangGY1993/GYSpectrum/blob/master//display.gif)
 
 
 示例用法：
