@@ -1,0 +1,320 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6909EB201D6565740051ACFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6909EB1F1D6565740051ACFD /* main.m */; };
+		6909EB231D6565740051ACFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6909EB221D6565740051ACFD /* AppDelegate.m */; };
+		6909EB261D6565740051ACFD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6909EB251D6565740051ACFD /* ViewController.m */; };
+		6909EB291D6565740051ACFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6909EB271D6565740051ACFD /* Main.storyboard */; };
+		6909EB2B1D6565740051ACFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6909EB2A1D6565740051ACFD /* Assets.xcassets */; };
+		6909EB2E1D6565740051ACFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6909EB2C1D6565740051ACFD /* LaunchScreen.storyboard */; };
+		6909EB371D65968A0051ACFD /* SpectrumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6909EB361D65968A0051ACFD /* SpectrumView.m */; };
+		696A5A4A1D66D3400006AE63 /* Readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 696A5A491D66D3400006AE63 /* Readme.txt */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6909EB1B1D6565740051ACFD /* GYSpectrum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GYSpectrum.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6909EB1F1D6565740051ACFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6909EB211D6565740051ACFD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6909EB221D6565740051ACFD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6909EB241D6565740051ACFD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		6909EB251D6565740051ACFD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6909EB281D6565740051ACFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6909EB2A1D6565740051ACFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6909EB2D1D6565740051ACFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6909EB2F1D6565740051ACFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6909EB351D65968A0051ACFD /* SpectrumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectrumView.h; sourceTree = "<group>"; };
+		6909EB361D65968A0051ACFD /* SpectrumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectrumView.m; sourceTree = "<group>"; };
+		696A5A491D66D3400006AE63 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Readme.txt; path = GYSpectrum/Readme.txt; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6909EB181D6565740051ACFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6909EB121D6565740051ACFD = {
+			isa = PBXGroup;
+			children = (
+				696A5A491D66D3400006AE63 /* Readme.txt */,
+				6909EB1D1D6565740051ACFD /* GYSpectrum */,
+				6909EB1C1D6565740051ACFD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6909EB1C1D6565740051ACFD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6909EB1B1D6565740051ACFD /* GYSpectrum.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6909EB1D1D6565740051ACFD /* GYSpectrum */ = {
+			isa = PBXGroup;
+			children = (
+				6909EB211D6565740051ACFD /* AppDelegate.h */,
+				6909EB221D6565740051ACFD /* AppDelegate.m */,
+				6909EB351D65968A0051ACFD /* SpectrumView.h */,
+				6909EB361D65968A0051ACFD /* SpectrumView.m */,
+				6909EB241D6565740051ACFD /* ViewController.h */,
+				6909EB251D6565740051ACFD /* ViewController.m */,
+				6909EB271D6565740051ACFD /* Main.storyboard */,
+				6909EB2A1D6565740051ACFD /* Assets.xcassets */,
+				6909EB2C1D6565740051ACFD /* LaunchScreen.storyboard */,
+				6909EB2F1D6565740051ACFD /* Info.plist */,
+				6909EB1E1D6565740051ACFD /* Supporting Files */,
+			);
+			path = GYSpectrum;
+			sourceTree = "<group>";
+		};
+		6909EB1E1D6565740051ACFD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6909EB1F1D6565740051ACFD /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6909EB1A1D6565740051ACFD /* GYSpectrum */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6909EB321D6565740051ACFD /* Build configuration list for PBXNativeTarget "GYSpectrum" */;
+			buildPhases = (
+				6909EB171D6565740051ACFD /* Sources */,
+				6909EB181D6565740051ACFD /* Frameworks */,
+				6909EB191D6565740051ACFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GYSpectrum;
+			productName = GYSpectrum;
+			productReference = 6909EB1B1D6565740051ACFD /* GYSpectrum.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6909EB131D6565740051ACFD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "黄国裕";
+				TargetAttributes = {
+					6909EB1A1D6565740051ACFD = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = 6909EB161D6565740051ACFD /* Build configuration list for PBXProject "GYSpectrum" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6909EB121D6565740051ACFD;
+			productRefGroup = 6909EB1C1D6565740051ACFD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6909EB1A1D6565740051ACFD /* GYSpectrum */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6909EB191D6565740051ACFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				696A5A4A1D66D3400006AE63 /* Readme.txt in Resources */,
+				6909EB2E1D6565740051ACFD /* LaunchScreen.storyboard in Resources */,
+				6909EB2B1D6565740051ACFD /* Assets.xcassets in Resources */,
+				6909EB291D6565740051ACFD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6909EB171D6565740051ACFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6909EB261D6565740051ACFD /* ViewController.m in Sources */,
+				6909EB231D6565740051ACFD /* AppDelegate.m in Sources */,
+				6909EB201D6565740051ACFD /* main.m in Sources */,
+				6909EB371D65968A0051ACFD /* SpectrumView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6909EB271D6565740051ACFD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6909EB281D6565740051ACFD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6909EB2C1D6565740051ACFD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6909EB2D1D6565740051ACFD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6909EB301D6565740051ACFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6909EB311D6565740051ACFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6909EB331D6565740051ACFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GYSpectrum/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HuangGY.GYSpectrum;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6909EB341D6565740051ACFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GYSpectrum/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HuangGY.GYSpectrum;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6909EB161D6565740051ACFD /* Build configuration list for PBXProject "GYSpectrum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6909EB301D6565740051ACFD /* Debug */,
+				6909EB311D6565740051ACFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6909EB321D6565740051ACFD /* Build configuration list for PBXNativeTarget "GYSpectrum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6909EB331D6565740051ACFD /* Debug */,
+				6909EB341D6565740051ACFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6909EB131D6565740051ACFD /* Project object */;
+}
