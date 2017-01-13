@@ -13,6 +13,8 @@
     UILabel *tipLabel;
 }
 
+@property (strong, nonatomic) AVAudioSession *audioSession;
+
 @end
 
 @implementation ViewController
@@ -99,6 +101,22 @@
 
 - (void)recordStart:(UIButton *)button
 {
+    
+    if (!_audioSession) {
+        _audioSession = [AVAudioSession sharedInstance];
+        NSError *err = nil;
+        [_audioSession setCategory :AVAudioSessionCategoryRecord error:&err];
+        if(err){
+            NSLog(@"audioSession: %@ %ld %@", [err domain], (long)[err code], [[err userInfo] description]);
+            return;
+        }
+        err = nil;
+        [_audioSession setActive:YES error:&err];
+        if(err){
+            NSLog(@"audioSession: %@ %ld %@", [err domain], (long)[err code], [[err userInfo] description]);
+            return;
+        }
+    }
     
     if ([[[UIDevice currentDevice] systemVersion] compare:@"7.0"] != NSOrderedAscending)
     {
