@@ -42,6 +42,7 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     NSLog(@"awakeFromNib");
     [self setup];
 }
@@ -77,6 +78,7 @@
     NSLog(@"setItemLevelCallback");
     
     _itemLevelCallback = itemLevelCallback;
+
     
     CADisplayLink *displaylink = [CADisplayLink displayLinkWithTarget:_itemLevelCallback selector:@selector(invoke)];
     displaylink.frameInterval = 6;
@@ -163,6 +165,7 @@
     
     UIGraphicsEndImageContext();
 }
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
