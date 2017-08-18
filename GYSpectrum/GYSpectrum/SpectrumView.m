@@ -15,6 +15,8 @@
 @property (nonatomic) CGFloat itemHeight;
 @property (nonatomic) CGFloat itemWidth;
 
+@property (nonatomic, strong) CADisplayLink *displayLink;
+
 @end
 
 @implementation SpectrumView
@@ -79,10 +81,7 @@
     
     _itemLevelCallback = itemLevelCallback;
 
-    
-    CADisplayLink *displaylink = [CADisplayLink displayLinkWithTarget:_itemLevelCallback selector:@selector(invoke)];
-    displaylink.frameInterval = 6;
-    [displaylink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+    [self start];
     
     for(int i=0; i < self.numberOfItems; i++)
     {
@@ -164,6 +163,19 @@
     }
     
     UIGraphicsEndImageContext();
+}
+
+- (void)start {
+    if (self.displayLink == nil) {
+        self.displayLink = [CADisplayLink displayLinkWithTarget:_itemLevelCallback selector:@selector(invoke)];
+        self.displayLink.frameInterval = 6;
+        [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+    }
+}
+
+- (void)stop {
+    [self.displayLink invalidate];
+    self.displayLink = nil;
 }
 
 

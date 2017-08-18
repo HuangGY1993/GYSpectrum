@@ -24,5 +24,7 @@
 
 @property (nonatomic) NSString *text;
 
+- (void)start;
+- (void)stop;
 
 @end

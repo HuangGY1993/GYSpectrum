@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SpectrumView.h"
-#import <AVFoundation/AVAudioRecorder.h>
-#import <AVFoundation/AVAudioSession.h>
+#import <AVFoundation/AVFoundation.h>
 #import <CoreAudio/CoreAudioTypes.h>
 
 @interface ViewController : UIViewController<AVAudioRecorderDelegate>

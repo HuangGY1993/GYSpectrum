@@ -115,6 +115,7 @@
 				TargetAttributes = {
 					696A5A531D66E3750006AE63 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 8M3985953F;
 					};
 				};
 			};
@@ -271,9 +272,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8M3985953F;
 				INFOPLIST_FILE = GYSpectrum/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HuangGY.GYSpectrum;
+				PRODUCT_BUNDLE_IDENTIFIER = HuangGY.GYSpectrumDemoTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -282,9 +284,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8M3985953F;
 				INFOPLIST_FILE = GYSpectrum/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HuangGY.GYSpectrum;
+				PRODUCT_BUNDLE_IDENTIFIER = HuangGY.GYSpectrumDemoTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -308,6 +311,7 @@
 				696A5A6D1D66E3760006AE63 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
