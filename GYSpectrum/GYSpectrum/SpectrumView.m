@@ -10,10 +10,11 @@
 
 @interface SpectrumView ()
 
-@property (nonatomic, strong) NSMutableArray * levelArray;
-@property (nonatomic) NSMutableArray * itemArray;
+@property (nonatomic, strong) NSMutableArray * levels;
+@property (nonatomic, strong) NSMutableArray * itemLineLayers;
 @property (nonatomic) CGFloat itemHeight;
 @property (nonatomic) CGFloat itemWidth;
+@property (nonatomic) CGFloat lineWidth;//自适应
 
 @property (nonatomic, strong) CADisplayLink *displayLink;
 
@@ -22,8 +23,7 @@
 @implementation SpectrumView
 
 
-- (id)init
-{
+- (id)init {
     NSLog(@"init");
     if(self = [super init]) {
         [self setup];
@@ -32,8 +32,9 @@
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
+
+
+- (id)initWithFrame:(CGRect)frame {
     NSLog(@"initWithFrame");
     if (self = [super initWithFrame:frame]) {
         [self setup];
@@ -49,65 +50,102 @@
     [self setup];
 }
 
-- (void)setup
-{
+- (void)setup {
     
     NSLog(@"setup");
-    
-    self.itemArray = [NSMutableArray new];
-    
-    self.numberOfItems = 20;//偶数
-   
+
+    self.numberOfItems = 20.f;//偶数
+
     self.itemColor = [UIColor colorWithRed:241/255.f green:60/255.f blue:57/255.f alpha:1.0];
 
-    self.itemHeight = CGRectGetHeight(self.bounds);
-    self.itemWidth  = CGRectGetWidth(self.bounds);
+    self.middleInterval = 30.f;
     
-    self.timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.itemWidth*0.4, 0, self.itemWidth*0.2, self.itemHeight)];
+    self.timeLabel = [[UILabel alloc]init];
     self.timeLabel.text = @"";
     [self.timeLabel setTextColor:[UIColor grayColor]];
     [self.timeLabel setTextAlignment:NSTextAlignmentCenter];
     [self addSubview:self.timeLabel];
-    
-    self.levelArray = [[NSMutableArray alloc]init];
-    for(int i = 0 ; i < self.numberOfItems/2 ; i++){
-        [self.levelArray addObject:@(1)];
+}
+
+#pragma mark - layout
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+
+    self.itemHeight = CGRectGetHeight(self.bounds);
+    self.itemWidth = CGRectGetWidth(self.bounds);
+
+    [self.timeLabel sizeToFit];
+    self.timeLabel.center = CGPointMake(self.itemWidth * 0.5f, self.itemHeight * 0.5f);
+
+    self.lineWidth = (self.itemWidth - self.middleInterval) / 2.f / self.numberOfItems;
+}
+
+#pragma mark - setter
+
+- (void)setItemColor:(UIColor *)itemColor {
+    _itemColor = itemColor;
+    for (CAShapeLayer *itemLine in self.itemLineLayers) {
+        itemLine.strokeColor = [self.itemColor CGColor];
     }
 }
 
--(void)setItemLevelCallback:(void (^)())itemLevelCallback
-{
+- (void)setNumberOfItems:(NSUInteger)numberOfItems {
+    if (_numberOfItems == numberOfItems) {
+        return;
+    }
+    _numberOfItems = numberOfItems;
+
+    self.levels = [[NSMutableArray alloc]init];
+    for(int i = 0 ; i < self.numberOfItems / 2 ; i++){
+        [self.levels addObject:@(0)];
+    }
+
+
+    for (CAShapeLayer *itemLine in self.itemLineLayers) {
+        [itemLine removeFromSuperlayer];
+    }
+    self.itemLineLayers = [NSMutableArray array];
+    for(int i=0; i < numberOfItems; i++) {
+        CAShapeLayer *itemLine = [CAShapeLayer layer];
+        itemLine.lineCap       = kCALineCapButt;
+        itemLine.lineJoin      = kCALineJoinRound;
+        itemLine.strokeColor   = [[UIColor clearColor] CGColor];
+        itemLine.fillColor     = [[UIColor clearColor] CGColor];
+        itemLine.strokeColor   = [self.itemColor CGColor];
+        itemLine.lineWidth     = self.lineWidth;
+
+        [self.layer addSublayer:itemLine];
+        [self.itemLineLayers addObject:itemLine];
+    }
+}
+
+- (void)setLineWidth:(CGFloat)lineWidth {
+    if (_lineWidth != lineWidth) {
+        _lineWidth = lineWidth;
+        for (CAShapeLayer *itemLine in self.itemLineLayers) {
+            itemLine.lineWidth = lineWidth;
+        }
+    }
+}
+
+- (void)setItemLevelCallback:(void (^)())itemLevelCallback {
     NSLog(@"setItemLevelCallback");
     
     _itemLevelCallback = itemLevelCallback;
 
     [self start];
-    
-    for(int i=0; i < self.numberOfItems; i++)
-    {
-        CAShapeLayer *itemline = [CAShapeLayer layer];
-        itemline.lineCap       = kCALineCapButt;
-        itemline.lineJoin      = kCALineJoinRound;
-        itemline.strokeColor   = [[UIColor clearColor] CGColor];
-        itemline.fillColor     = [[UIColor clearColor] CGColor];
-        [itemline setLineWidth:self.itemWidth*0.4/self.numberOfItems];
-        itemline.strokeColor   = [self.itemColor CGColor];
-        
-        [self.layer addSublayer:itemline];
-        [self.itemArray addObject:itemline];
-    }
-    
+
 }
 
 
-- (void)setLevel:(CGFloat)level
-{
+- (void)setLevel:(CGFloat)level {
     //NSLog(@"setLevel:%f",level);
     level = (level+37.5)*3.2;
     if( level < 0 ) level = 0;
 
-    [self.levelArray removeObjectAtIndex:self.numberOfItems/2-1];
-    [self.levelArray insertObject:@((level / 6) < 1 ? 1 : level / 6) atIndex:0];
+    [self.levels removeObjectAtIndex:self.numberOfItems/2-1];
+    [self.levels insertObject:@(level / 6.f) atIndex:0];
     
     [self updateItems];
     
@@ -118,48 +156,51 @@
     self.timeLabel.text = text;
 }
 
-
-- (void)updateItems
-{
-    //NSLog(@"updateMeters");
-    
-    UIGraphicsBeginImageContext(self.frame.size);
-    
-    int x = self.itemWidth*0.8/self.numberOfItems;
-    int z = self.itemWidth*0.2/self.numberOfItems;
-    int y = self.itemWidth*0.6 - z;
-    
-    for(int i=0; i < (self.numberOfItems / 2); i++) {
-        
-        UIBezierPath *itemLinePath = [UIBezierPath bezierPath];
-        
-        y += x;
-        
-        [itemLinePath moveToPoint:CGPointMake(y, self.itemHeight/2+([[self.levelArray objectAtIndex:i]intValue]+1)*z/2)];
-        
-        [itemLinePath addLineToPoint:CGPointMake(y, self.itemHeight/2-([[self.levelArray objectAtIndex:i]intValue]+1)*z/2)];
-        
-        CAShapeLayer *itemLine = [self.itemArray objectAtIndex:i];
-        itemLine.path = [itemLinePath CGPath];
-        
+- (void)setMiddleInterval:(CGFloat)middleInterval {
+    if (_middleInterval != middleInterval) {
+        _middleInterval = middleInterval;
+        [self setNeedsLayout];
     }
-    
-    
-    y = self.itemWidth*0.4 + z;
-    
-    for(int i = (int)self.numberOfItems / 2; i < self.numberOfItems; i++) {
-        
-        UIBezierPath *itemLinePath = [UIBezierPath bezierPath];
-        
-        y -= x;
-        
-        [itemLinePath moveToPoint:CGPointMake(y, self.itemHeight/2+([[self.levelArray objectAtIndex:i-self.numberOfItems/2]intValue]+1)*z/2)];
-        
-        [itemLinePath addLineToPoint:CGPointMake(y, self.itemHeight/2-([[self.levelArray objectAtIndex:i-self.numberOfItems/2]intValue]+1)*z/2)];
-        
-        CAShapeLayer *itemLine = [self.itemArray objectAtIndex:i];
-        itemLine.path = [itemLinePath CGPath];
-        
+}
+
+
+#pragma mark - update
+
+- (void)updateItems {
+    //NSLog(@"updateMeters");
+
+    UIGraphicsBeginImageContext(self.frame.size);
+
+    int lineOffset = self.lineWidth * 2.f;
+
+    int leftX = (self.itemWidth - self.middleInterval + self.lineWidth) / 2.f;
+    int rightX = (self.itemWidth + self.middleInterval - self.lineWidth) / 2.f;
+
+
+    for(int i = 0; i < self.numberOfItems / 2; i++) {
+
+        CGFloat lineHeight = self.lineWidth + [self.levels[i] floatValue] * self.lineWidth / 2.f;
+        //([[self.levels objectAtIndex:i]intValue]+1)*self.lineWidth/2.f;
+        CGFloat lineTop = (self.itemHeight - lineHeight) / 2.f;
+        CGFloat lineBottom = (self.itemHeight + lineHeight) / 2.f;
+
+
+        leftX -= lineOffset;
+
+        UIBezierPath *linePathLeft = [UIBezierPath bezierPath];
+        [linePathLeft moveToPoint:CGPointMake(leftX, lineTop)];
+        [linePathLeft addLineToPoint:CGPointMake(leftX, lineBottom)];
+        CAShapeLayer *itemLine2 = [self.itemLineLayers objectAtIndex:i + self.numberOfItems / 2];
+        itemLine2.path = [linePathLeft CGPath];
+
+
+        rightX += lineOffset;
+
+        UIBezierPath *linePathRight = [UIBezierPath bezierPath];
+        [linePathRight moveToPoint:CGPointMake(rightX, lineTop)];
+        [linePathRight addLineToPoint:CGPointMake(rightX, lineBottom)];
+        CAShapeLayer *itemLine = [self.itemLineLayers objectAtIndex:i];
+        itemLine.path = [linePathRight CGPath];
     }
     
     UIGraphicsEndImageContext();
@@ -168,7 +209,7 @@
 - (void)start {
     if (self.displayLink == nil) {
         self.displayLink = [CADisplayLink displayLinkWithTarget:_itemLevelCallback selector:@selector(invoke)];
-        self.displayLink.frameInterval = 6;
+        self.displayLink.frameInterval = 6.f;
         [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
     }
 }

@@ -57,6 +57,7 @@
     //Example 3
     self.spectrumView3 = [[SpectrumView alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds)-150,240,300, 60.0)];
     self.spectrumView3.text = [NSString stringWithFormat:@"%d",0];
+    self.spectrumView3.middleInterval = 50;
     __weak SpectrumView * weakSpectrum2 = self.spectrumView3;
     self.spectrumView3.itemLevelCallback = ^() {
         

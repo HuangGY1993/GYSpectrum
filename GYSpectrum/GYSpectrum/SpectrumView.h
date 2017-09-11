@@ -24,6 +24,8 @@
 
 @property (nonatomic) NSString *text;
 
+@property (nonatomic) CGFloat middleInterval;
+
 - (void)start;
 - (void)stop;
 
